@@ -200,14 +200,14 @@ spec:
         - collect-data
     - name: verify-enterprise-contract
       taskRef:
-        resolver: "bundles"
+        resolver: "git"
         params:
-          - name: bundle
-            value: $(params.verify_ec_task_bundle)
-          - name: kind
-            value: task
-          - name: name
-            value: verify-enterprise-contract
+          - name: url
+            value: https://github.com/ralphbean/ec-cli
+          - name: revision
+            value: "debugging"
+          - name: pathInRepo
+            value: tasks/verify-enterprise-contract/0.1/verify-enterprise-contract.yaml
       params:
         - name: IMAGES
           value: "$(workspaces.data.path)/$(tasks.collect-data.results.snapshotSpec)"
